@@ -1,0 +1,124 @@
+{
+  "data": {
+    "items": [
+      {
+        "review_id": "f6c608a80cf7ea31",
+        "product_id": "SYN-KUR-008",
+        "rating": 5,
+        "review_title": "Mulmul softness is unmatched",
+        "review_text": "Extremely soft and lightweight. Perfect summer daily wear.",
+        "review_date": "2026-04-05T00:00:00",
+        "source": "synthetic_review",
+        "collected_at": "2026-10-13T21:12:25.750773"
+      },
+      {
+        "review_id": "a8299ece7c3442f7",
+        "product_id": "SYN-KUR-001",
+        "rating": 2,
+        "review_title": "Slight shrinkage on machine wash",
+        "review_text": "Shrunk half an inch after regular wash. Suggest air-drying or ordering one size up.",
+        "review_date": "2026-04-01T00:00:00",
+        "source": "synthetic_review",
+        "collected_at": "2026-10-13T21:12:25.750773"
+      },
+      {
+        "review_id": "51d9326638051069",
+        "product_id": "SYN-KUR-013",
+        "rating": 4,
+        "review_title": "Subtle classy indigo khadi",
+        "review_text": "Pre-shrunk fabric feels sturdy. Doesn't crumple easily.",
+        "review_date": "2026-03-25T00:00:00",
+        "source": "synthetic_review",
+        "collected_at": "2026-10-13T21:12:25.750773"
+      },
+      {
+        "review_id": "8509029d68b7ab51",
+        "product_id": "SYN-KUR-001",
+        "rating": 4,
+        "review_title": "Good quality stitching, true to bust measurement",
+        "review_text": "Fabric is non-transparent and comfortable for office wear. Armholes fit comfortably.",
+        "review_date": "2026-03-22T00:00:00",
+        "source": "synthetic_review",
+        "collected_at": "2026-10-13T21:12:25.750773"
+      },
+      {
+        "review_id": "6870fb6086d91be9",
+        "product_id": "SYN-KUR-009",
+        "rating": 5,
+        "review_title": "Proud of local handloom motifs",
+        "review_text": "Fit is comfortable and print matches pictures accurately.",
+        "review_date": "2026-03-19T00:00:00",
+        "source": "synthetic_review",
+        "collected_at": "2026-10-13T21:12:25.750773"
+      },
+      {
+        "review_id": "c09e05d4e18b5af7",
+        "product_id": "SYN-KUR-001",
+        "rating": 5,
+        "review_title": "Super breathable cotton for hot humid weather",
+        "review_text": "The fabric is pure 60s combed cotton. Doesn't feel cheap or thin. Color did not run after first wash.",
+        "review_date": "2026-03-14T00:00:00",
+        "source": "synthetic_review",
+        "collected_at": "2026-10-13T21:12:25.750773"
+      },
+      {
+        "review_id": "489b98cbb8dcd028",
+        "product_id": "SYN-KUR-004",
+        "rating": 5,
+        "review_title": "Authentic Khadi texture and professional look",
+        "review_text": "Sambalpuri border pattern is crisp. High praise from colleagues at work.",
+        "review_date": "2026-03-10T00:00:00",
+        "source": "synthetic_review",
+        "collected_at": "2026-10-13T21:12:25.750773"
+      },
+      {
+        "review_id": "87681c5a287821c8",
+        "product_id": "SYN-KUR-007",
+        "rating": 1,
+        "review_title": "Color faded on collar after first rinse",
+        "review_text": "Expected better dye fastness even at budget price. Wouldn't repurchase.",
+        "review_date": "2026-03-02T00:00:00",
+        "source": "synthetic_review",
+        "collected_at": "2026-10-13T21:12:25.750773"
+      },
+      {
+        "review_id": "38056c5088a5ec20",
+        "product_id": "SYN-KUR-002",
+        "rating": 5,
+        "review_title": "Rich festival look at fair price",
+        "review_text": "Maroon shade is festive and elegant. Chanderi flare looks graceful for temple and weddings.",
+        "review_date": "2026-02-18T00:00:00",
+        "source": "synthetic_review",
+        "collected_at": "2026-10-13T21:12:25.750773"
+      },
+      {
+        "review_id": "fd95395cc8a2731c",
+        "product_id": "SYN-KUR-003",
+        "rating": 2,
+        "review_title": "Fabric is too thin under direct light",
+        "review_text": "Very thin rayon material. Definitely requires slip underneath. Pockets are good though.",
+        "review_date": "2026-01-29T00:00:00",
+        "source": "synthetic_review",
+        "collected_at": "2026-10-13T21:12:25.750773"
+      }
+    ],
+    "total": 10,
+    "limit": 10,
+    "offset": 0
+  },
+  "meta": {
+    "niche": "All Listings (Whole Category)",
+    "sample_size": 10,
+    "as_of": "2026-10-13T22:08:37.404541+00:00",
+    "data_mode": "demo",
+    "sources": [
+      "synthetic_review"
+    ],
+    "limitations": [
+      "Market metrics reflect a point-in-time public catalog snapshot.",
+      "Non-random sample of active listings; variants are counted as separate rows.",
+      "Review ratings reflect self-selected customer sentiment, not verified purchase rates.",
+      "Review counts represent cumulative customer attention, not current unit sales or revenue."
+    ]
+  }
+}

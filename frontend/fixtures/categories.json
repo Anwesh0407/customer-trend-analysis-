@@ -1,0 +1,32 @@
+[
+  {
+    "id": "cat_kurtas",
+    "name": "Women's Kurtas & Kurtis",
+    "display_name": "Kurtas & Kurtis",
+    "description": "Women's ethnic wear kurtas, kurtis, and tunics.",
+    "is_active": true,
+    "product_count": 32,
+    "last_updated": "2026-10-13T21:44:27.765396",
+    "data_mode": "demo"
+  },
+  {
+    "id": "cat_sarees",
+    "name": "Sarees",
+    "display_name": "Sarees",
+    "description": "Traditional Indian sarees (Coming Soon).",
+    "is_active": false,
+    "product_count": 0,
+    "last_updated": "2026-10-13T21:26:29.357264",
+    "data_mode": "demo"
+  },
+  {
+    "id": "cat_jewellery",
+    "name": "Fashion Jewellery",
+    "display_name": "Fashion Jewellery",
+    "description": "Earrings, necklaces, and bangles (Coming Soon).",
+    "is_active": false,
+    "product_count": 0,
+    "last_updated": "2026-10-13T21:26:29.357266",
+    "data_mode": "demo"
+  }
+]

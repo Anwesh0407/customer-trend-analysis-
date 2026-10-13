@@ -1,0 +1,49 @@
+{
+  "data": {
+    "cards": [
+      {
+        "rule_name": "MidTierPricingRule",
+        "type": "rec_price_sweet_spot",
+        "thresholds": {
+          "rule_threshold": "rating >= 4.0, band = '500-999', share >= 20%"
+        },
+        "evidence": "21 listings (65.6% of catalog) with average rating 4.28 \u2605.",
+        "sample_size": 21,
+        "confidence": "moderate",
+        "limitations": "Pricing power depends heavily on high-quality product photography and explicit fabric thickness bullet points in your listing.",
+        "why_this": "Shoppers seeking daily work and college wear prefer breathable cotton with dependable opacity over budget synthetic alternatives prone to return penalties.",
+        "suggested_action": "Worth investigating: launch new product at \u20b9849\u2013\u20b9899 with an introductory coupon to capture quality-conscious daily wear buyers."
+      },
+      {
+        "rule_name": "FabricDominanceRule",
+        "type": "rec_cotton_sourcing",
+        "thresholds": {
+          "rule_threshold": "material == 'Cotton', count >= 5"
+        },
+        "evidence": "16 listings observed utilizing Cotton with top review conversion.",
+        "sample_size": 16,
+        "confidence": "moderate",
+        "limitations": "Cotton requires pre-shrinking treatment to prevent customer return complaints regarding shrinkage after washing.",
+        "why_this": "Customer review analysis in Eastern India reveals that breathability and non-see-through fabric are the primary positive review drivers.",
+        "suggested_action": "Worth investigating: source 60s count pure combed cotton in Indigo Blue and Maroon with floral or Sambalpuri yoke prints."
+      }
+    ],
+    "suppressed": false,
+    "reason": null
+  },
+  "meta": {
+    "niche": "All Listings (Whole Category)",
+    "sample_size": 32,
+    "as_of": "2026-10-13T22:08:37.415622+00:00",
+    "data_mode": "demo",
+    "sources": [
+      "synthetic_curated"
+    ],
+    "limitations": [
+      "Market metrics reflect a point-in-time public catalog snapshot.",
+      "Non-random sample of active listings; variants are counted as separate rows.",
+      "Review ratings reflect self-selected customer sentiment, not verified purchase rates.",
+      "Review counts represent cumulative customer attention, not current unit sales or revenue."
+    ]
+  }
+}

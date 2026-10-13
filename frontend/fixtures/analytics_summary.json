@@ -1,0 +1,164 @@
+{
+  "data": {
+    "sample_size": 32,
+    "price_metrics": {
+      "min": 449.0,
+      "q1": 666.5,
+      "median": 859.5,
+      "q3": 961.5,
+      "max": 1850.0,
+      "n": 32
+    },
+    "price_bands": [
+      {
+        "band_name": "0-499",
+        "min_price": 0.0,
+        "max_price": 499.99,
+        "product_count": 4,
+        "avg_rating": 3.7,
+        "share_pct": 12.5
+      },
+      {
+        "band_name": "500-999",
+        "min_price": 500.0,
+        "max_price": 999.99,
+        "product_count": 21,
+        "avg_rating": 4.28,
+        "share_pct": 65.6
+      },
+      {
+        "band_name": "1000-1499",
+        "min_price": 1000.0,
+        "max_price": 1499.99,
+        "product_count": 6,
+        "avg_rating": 4.22,
+        "share_pct": 18.8
+      },
+      {
+        "band_name": "1500-1999",
+        "min_price": 1500.0,
+        "max_price": 1999.99,
+        "product_count": 1,
+        "avg_rating": 4.4,
+        "share_pct": 3.1
+      },
+      {
+        "band_name": "2000-2999",
+        "min_price": 2000.0,
+        "max_price": 2999.99,
+        "product_count": 0,
+        "avg_rating": 0.0,
+        "share_pct": 0.0
+      },
+      {
+        "band_name": "3000+",
+        "min_price": 3000.0,
+        "max_price": 999999.0,
+        "product_count": 0,
+        "avg_rating": 0.0,
+        "share_pct": 0.0
+      }
+    ],
+    "rating_metrics": {
+      "median": 4.25,
+      "mean": 4.2,
+      "n": 32
+    },
+    "discount_bands": {
+      "0-19%": 0,
+      "20-39%": 29,
+      "40-59%": 3,
+      "60%+": 0
+    },
+    "brand_metrics": {
+      "total_brands": 8,
+      "top_5_share_pct": 75.0,
+      "top_brands": {
+        "FabricEra Synthetic": 6,
+        "UtkalLoom Synthetic": 5,
+        "KalingaCraft Synthetic": 5,
+        "UtkalKhadi Synthetic": 4,
+        "PuriThreads Synthetic": 4
+      },
+      "n": 32
+    },
+    "attribute_counts": {
+      "colours": {
+        "Blue": 7,
+        "Maroon": 5,
+        "Yellow": 5,
+        "Black": 4,
+        "Green": 4,
+        "White": 4,
+        "Pink": 3
+      },
+      "materials": {
+        "Cotton": 16,
+        "Rayon": 7,
+        "Chanderi": 4,
+        "Cotton Silk": 4,
+        "Cotton Blend": 1
+      },
+      "patterns": {
+        "Solid": 7,
+        "Printed": 7,
+        "Floral": 5,
+        "Embroidered": 3,
+        "Geometric": 3,
+        "Woven": 3,
+        "Embellished": 2,
+        "Striped": 1,
+        "Checkered": 1
+      },
+      "sizes": {
+        "S": 16,
+        "M": 31,
+        "L": 32,
+        "XL": 27,
+        "XXL": 7,
+        "XS": 3,
+        "3XL": 5
+      }
+    },
+    "completeness": {
+      "asin": 100.0,
+      "product_name": 100.0,
+      "category": 100.0,
+      "brand": 100.0,
+      "price": 100.0,
+      "mrp": 100.0,
+      "discount_pct": 100.0,
+      "rating": 100.0,
+      "review_count": 100.0,
+      "colour": 100.0,
+      "material": 100.0,
+      "pattern": 100.0,
+      "sizes": 100.0,
+      "seller": 100.0,
+      "availability": 100.0,
+      "product_url": 100.0,
+      "source": 100.0,
+      "collected_at": 100.0,
+      "updated_at": 100.0
+    },
+    "attention_concentration": {
+      "top_10_pct_review_share": 26.6,
+      "note": "Attention concentration proxy only. Review counts are not sales counts."
+    }
+  },
+  "meta": {
+    "niche": "All Listings (Whole Category)",
+    "sample_size": 32,
+    "as_of": "2026-10-13T22:08:37.384481+00:00",
+    "data_mode": "demo",
+    "sources": [
+      "synthetic_curated"
+    ],
+    "limitations": [
+      "Market metrics reflect a point-in-time public catalog snapshot.",
+      "Non-random sample of active listings; variants are counted as separate rows.",
+      "Review ratings reflect self-selected customer sentiment, not verified purchase rates.",
+      "Review counts represent cumulative customer attention, not current unit sales or revenue."
+    ]
+  }
+}

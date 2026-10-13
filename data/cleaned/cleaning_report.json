@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-10-13T22:08:40.338160+00:00",
+  "source_file": "json:products_csv_sample_products_csv_20261013T220840Z.json",
+  "rows_in": 32,
+  "rows_out": 32,
+  "duplicates_removed": 0,
+  "rejected_counts": {},
+  "data_quality_notes": {},
+  "missing_counts_per_field": {},
+  "unrecognised_columns": []
+}

@@ -1,664 +1,139 @@
-# Amazon Vendor Assist (AVA) & Customer Trend Analytics
+# Amazon Vendor Assist (AVA)
 
-> **AVA Tagline:** *Sell smarter. Sell what people want.*  
-> A vendor intelligence platform helping small and local businesses make better sourcing, pricing, and merchandising decisions using marketplace data, analytics, and AI.
+> **Tagline:** *Sell smarter. Sell what people want.*  
+> An open, compliance-first vendor intelligence and merchandising analytics platform designed for small and regional Indian marketplace apparel vendors.
 
 ---
 
-## 🚀 AVA Quickstart Commands
+## 🌟 Executive Overview
 
-### 1. Backend (FastAPI + Python 3.12)
-```bash
-# Activate virtual environment
-source backend/.venv/bin/activate
+Amazon Vendor Assist (AVA) bridges the information asymmetry faced by regional Indian manufacturers and apparel sellers. By focusing deeply on a pilot high-velocity category (**Women's Kurtas & Kurtis**), AVA transforms public listing observations into actionable sourcing, sizing, and pricing intelligence.
 
-# Run backend server (port 8000)
-PYTHONPATH=. backend/.venv/bin/uvicorn backend.app.main:app --host 0.0.0.0 --port 8000 --reload
+### Key Capabilities
+- **Exact Stitch Prototype Replication:** 8 rich workspaces designed with Hanken Grotesk, JetBrains Mono, and the exact Stitch Design System (`#131921` Navy, `#ff9900` Orange, `#faf8ff` Canvas).
+- **Evidence Envelope Architecture:** Every analytical figure returned from the API includes metadata on sample size, confidence rating, generation timestamp, and legal disclaimers. The UI never calculates its own metrics.
+- **Compliance-First Ingestion:** Live unauthorized scraping of `amazon.in` is strictly prohibited by domain denylists, `robots.txt` enforcement, and immediate abort guards. Data is ingested through verified offline datasets or official Creator/Vendor APIs.
+- **Zero-Hallucination AI Copilot (Ask AVA):** Read-only function calling, server-side prompt injection of niche context, and automated post-generation numeric verification ensuring 0 invented figures.
+- **Idempotent CLI Pipeline:** A single unified CLI (`run.py`) handling end-to-end data collection, 12-step cleaning/validation, analytical aggregation, and database loading.
+
+---
+
+## 📁 Repository Layout
+
+```text
+Amazon vendor assist project/
+├── api/                    # FastAPI application layer
+│   ├── assistant/          # Ask AVA engine, tools, prompts, response verifier
+│   ├── routers/            # Clean REST API endpoints (/api/v1/...)
+│   ├── schemas/            # Request/response contracts & Evidence Envelopes
+│   └── main.py             # FastAPI entrypoint
+├── ava/                    # Core business logic & analytics library
+│   ├── analytics/          # Pandas market aggregations & opportunity scoring
+│   ├── collectors/         # Raw data ingestion collectors
+│   ├── processing/         # 12-rule parser, validator, deduplicator, cleaner
+│   ├── recommendations/    # Rule-based sourcing blueprints & similarity engine
+│   ├── sources/            # CSV, JSON, public page, and Creators API adapters
+│   └── storage/            # SQLAlchemy repository & Alembic migrations
+├── data/
+│   ├── sample/             # Curated synthetic dataset (SYN-KUR-001..032)
+│   ├── raw/                # Timestamped raw ingestion history (immutable)
+│   ├── cleaned/            # Cleaned artifacts & cleaning_report.json
+│   └── reports/            # Markdown market summaries & JSON analytics
+├── docs/                   # Full documentation & specifications
+│   ├── AUDIT_REPORT.md     # Initial blueprint audit
+│   ├── STATUS_REPORT.md    # Final 58-point verification matrix (100% PASS)
+│   ├── data-dictionary.md  # 18 product & 8 review canonical fields
+│   ├── limitations.md      # Ethics, non-random sampling, and disclaimers
+│   ├── demo-script.md      # 5-10 minute presentation guide
+│   └── api-contract.md     # REST endpoint catalog & envelope specs
+├── frontend/               # React 19 + TypeScript + Vite + Tailwind CSS (Stitch UI)
+│   ├── src/workspaces/     # 8 dedicated workspaces
+│   ├── src/theme/          # Exact Stitch design system tokens
+│   └── fixtures/           # Auto-generated offline mock fixtures
+├── legacy/                 # Fully isolated historical customer analytics
+│   └── customer-shopping/  # Power BI dashboard, SQL queries, Jupyter notebook
+├── tests/                  # 44 passing automated tests
+│   ├── api/                # Integration tests for REST endpoints
+│   ├── assistant/          # Golden question & refusal evaluation suite
+│   ├── contract/           # OpenAPI schema & fixture validation
+│   └── core/               # Parsing, cleaning, analytics, storage tests
+├── docker-compose.yml      # Optional PostgreSQL service configuration
+├── run.py                  # Master CLI (collect, clean, analyze, load, pipeline, serve)
+└── requirements.txt        # Python dependency manifest
 ```
-- API Documentation: `http://localhost:8000/docs`
-- Health Endpoint: `http://localhost:8000/api/health`
 
-### 2. Frontend (React 19 + TypeScript + Vite + Tailwind CSS)
+---
+
+## 🚀 Quickstart Guide
+
+### 1. Prerequisites
+- Python 3.12+
+- Node.js 18+ & npm
+
+### 2. Backend Setup
+```bash
+# Set up virtual environment
+python3 -m venv backend/.venv
+source backend/.venv/bin/activate
+pip install -r requirements.txt
+
+# Run the end-to-end data pipeline (collect -> clean -> analyze -> load)
+python run.py pipeline
+
+# Start the API server on port 8000
+python run.py serve --port 8000
+```
+- Interactive API Docs: `http://localhost:8000/docs`
+- Health Endpoint: `http://localhost:8000/health`
+
+### 3. Frontend Setup
+In a new terminal:
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-- Web Application: `http://localhost:5173`
+- Access the Application: `http://localhost:5173`
 
-### 3. Run Backend Test Suite
+---
+
+## 🧪 Testing & Validation
+
+The codebase includes an exhaustive test suite covering data parsing, cleaning rules, hand-computed analytics math, storage engines, API contracts, and the Ask AVA golden question suite:
+
 ```bash
-PYTHONPATH=. backend/.venv/bin/pytest backend/tests/test_api.py
+# Run the full test suite (44 tests)
+backend/.venv/bin/pytest
+
+# Run frontend build & type check
+cd frontend && npm run build
 ```
 
 ---
 
-## 📁 Repository Structure
-```text
-Amazon vendor assist project/
-├── frontend/             # React 19 + TypeScript + Vite + Tailwind CSS (Stitch UI)
-├── backend/              # FastAPI + SQLAlchemy + Pydantic + ML scoring
-│   ├── app/              # Core, API routes, models, schemas, services
-│   └── tests/            # Pytest test suite (100% passing)
-├── data/
-│   ├── sample/           # Curated Kurtas & Kurtis sample dataset & reviews (JSON/CSV)
-│   ├── raw/              # Raw data intake (git-ignored)
-│   └── processed/        # Cleaned dataset artifacts
-├── legacy_analysis/      # Preserved legacy customer behavior analytics project
-│   ├── notebooks/        # Jupyter notebook
-│   ├── sql/              # 10 business SQL queries
-│   ├── dashboard/        # Power BI .pbix file
-│   └── data/             # customer_shopping_behavior.csv
-├── .env.example          # Safe configuration template (zero committed secrets)
-├── .gitignore            # Git exclusion rules
-└── README.md
-```
+## 📊 The 8 Integrated Workspaces
+
+1. **Categories Workspace:** Pilot focus on Women's Kurtas & Kurtis with live metric badges; 6 upcoming apparel categories with pilot request CTA.
+2. **Define Niche Workspace:** Real-time filter sliders (price corridor, fabric, pattern, sizes) with live sample count preview and small sample warnings (`n < 5`).
+3. **Market Results Workspace:** 3-column active facet stack with Grid vs. Dense Table toggle exposing all 18 canonical attributes.
+4. **Analytics Workspace:** Bento KPI strip, 4-tier vertical price distribution histogram, horizontal color concentration bars, and strategic hypotheses.
+5. **Reviews Workspace:** Net Sentiment score (`+62`), segmented distribution bar (72/18/10), and 3 VoC pillars (Sizing, Fabric, Durability).
+6. **Recommendations Workspace:** Vendor sourcing blueprint with recommended price sweet spot (`₹749–₹899`), 30-day demand wave SVG, technical textile specs, and "Why this?" rationale.
+7. **Product Details Workspace:** Diagnostic pricing box (Listing vs. Niche Median), 18-attribute specifications grid, and benchmark listings comparison.
+8. **Ask AVA Copilot:** Zero-hallucination vendor assistant with live telemetry grounding, read-only tools, numeric response verification, and strict refusal of competitor sales queries.
 
 ---
 
-# Legacy Project: Customer Shopping Behavior Analysis
-
-An end-to-end data analytics project that analyzes customer shopping
-behavior using **Python, PostgreSQL/SQL, and Power BI**.
-
-The project follows a practical analytics workflow: understand the
-business problem, clean and transform the data, answer business
-questions with SQL, and present the findings through an interactive
-Power BI dashboard.
-
-------------------------------------------------------------------------
-
-## Project Overview
-
-Understanding customer purchasing behavior can help a business improve
-its marketing strategy, customer engagement, product decisions, and
-retention.
-
-This project analyzes a customer shopping dataset to identify patterns
-across:
-
--   Customer demographics
--   Product categories and products
--   Purchase amounts
--   Discounts and promotions
--   Subscription status
--   Shipping methods
--   Customer loyalty
--   Purchase frequency
--   Review ratings
--   Age groups
-
-### Business Question
-
-> **How can customer shopping data be used to identify purchasing
-> trends, understand customer segments, and support better marketing and
-> product decisions?**
-
-------------------------------------------------------------------------
-
-## Project Workflow
-
-``` text
-Raw Dataset
-     ↓
-Python / Pandas
-     ↓
-Data Exploration & Cleaning
-     ↓
-Feature Engineering
-     ↓
-PostgreSQL
-     ↓
-SQL Business Analysis
-     ↓
-Power BI
-     ↓
-Interactive Dashboard
-     ↓
-Business Insights
-```
-
-------------------------------------------------------------------------
-
-## Dataset
-
-The dataset contains **3,900 customer records** and **18 original
-attributes**.
-
-Each row represents a customer and their latest recorded purchase rather
-than a complete transaction history.
-
-### Main Attributes
-
-  Column                   Description
-  ------------------------ ------------------------------------
-  Customer ID              Unique customer identifier
-  Age                      Customer age
-  Gender                   Customer gender
-  Item Purchased           Product purchased
-  Category                 Product category
-  Purchase Amount (USD)    Amount spent on the purchase
-  Location                 Customer/purchase location
-  Size                     Product size
-  Color                    Product color
-  Season                   Purchase season
-  Review Rating            Customer review rating
-  Subscription Status      Whether the customer is subscribed
-  Shipping Type            Shipping method
-  Discount Applied         Whether a discount was applied
-  Promo Code Used          Whether a promo code was used
-  Previous Purchases       Number of previous purchases
-  Payment Method           Payment method
-  Frequency of Purchases   Purchase frequency
-
-> **Dataset limitation:** The dataset does not contain complete
-> historical transactions for every customer. It provides the latest
-> purchase along with previous-purchase count and purchase-frequency
-> information.
-
-------------------------------------------------------------------------
-
-# 1. Data Analysis with Python
-
-Python was used for initial data exploration, cleaning, transformation,
-and feature engineering.
-
-### Libraries
-
--   Python
--   Pandas
--   Jupyter Notebook
-
-### Exploratory Data Analysis
-
-The dataset was examined using:
-
-``` python
-df.head()
-df.info()
-df.describe(include='all')
-df.isnull().sum()
-```
-
-This was used to understand:
-
--   Dataset structure
--   Number of observations and columns
--   Data types
--   Summary statistics
--   Missing values
-
-### Missing Value Treatment
-
-The `Review Rating` column contained **37 missing values**.
-
-Instead of replacing all missing values with the overall median, the
-missing ratings were imputed using the **median rating within each
-product category**.
-
-``` python
-df['Review Rating'] = (
-    df.groupby('Category')['Review Rating']
-      .transform(lambda x: x.fillna(x.median()))
-)
-```
-
-This preserves differences in rating patterns between categories.
-
-### Column Standardization
-
-Column names were converted to lowercase and spaces were replaced with
-underscores.
-
-For example:
-
-``` text
-Customer ID
-        ↓
-customer_id
-```
-
-`Purchase Amount (USD)` was also renamed to:
-
-``` text
-purchase_amount
-```
-
-This makes the dataset easier to work with in both Python and SQL.
-
-### Feature Engineering
-
-#### Age Group
-
-Customers were divided into four age groups using `pd.qcut()`:
-
--   Young Adult
--   Adult
--   Middle-aged
--   Senior
-
-#### Purchase Frequency Days
-
-The text-based purchase frequency was converted into a numerical
-representation.
-
-Examples:
-
-``` text
-Weekly          → 7 days
-Fortnightly     → 14 days
-Monthly         → 30 days
-Quarterly       → 90 days
-Annually        → 365 days
-```
-
-This creates the new feature:
-
-``` text
-purchase_frequency_days
-```
-
-### Redundant Column Removal
-
-`discount_applied` and `promo_code_used` contained identical information
-in this dataset.
-
-After verifying their equality, `promo_code_used` was removed to avoid
-redundancy.
-
-------------------------------------------------------------------------
-
-# 2. SQL Analysis with PostgreSQL
-
-The cleaned dataset was loaded into a PostgreSQL database using
-**SQLAlchemy**.
-
-### Tools
-
--   PostgreSQL
--   pgAdmin
--   SQL
--   SQLAlchemy
--   psycopg2
-
-The cleaned DataFrame was loaded into a table named:
-
-``` text
-customer
-```
-
-### Business Questions
-
-The SQL analysis answers the following questions:
-
-1.  **What is the total revenue generated by male vs. female
-    customers?**
-
-2.  **Which customers used a discount but still spent more than the
-    average purchase amount?**
-
-3.  **Which are the top 5 products with the highest average review
-    rating?**
-
-4.  **How does the average purchase amount compare between Standard and
-    Express shipping?**
-
-5.  **Do subscribed customers spend more?**
-
-6.  **Which 5 products have the highest percentage of purchases with
-    discounts applied?**
-
-7.  **How many customers are New, Returning, and Loyal based on previous
-    purchases?**
-
-8.  **What are the top 3 most purchased products within each category?**
-
-9.  **Are repeat buyers with more than 5 previous purchases more likely
-    to subscribe?**
-
-10. **What is the revenue contribution of each age group?**
-
-### SQL Concepts Used
-
-The project demonstrates:
-
--   `SELECT`
--   `WHERE`
--   `GROUP BY`
--   `ORDER BY`
--   Aggregate functions
--   `AVG()`
--   `SUM()`
--   `COUNT()`
--   Subqueries
--   `CASE`
--   CTEs
--   `ROW_NUMBER()`
--   Window functions
--   Conditional aggregation
--   Type casting
--   Filtering and segmentation
-
-------------------------------------------------------------------------
-
-# 3. Key Findings
-
-Based on the cleaned dataset and SQL analysis:
-
-### Revenue by Gender
-
-  Gender     Revenue (USD)
-  -------- ---------------
-  Male           \$157,890
-  Female          \$75,191
-
-### Subscription Analysis
-
-  Subscription     Customers   Avg. Spend (USD)   Revenue (USD)
-  -------------- ----------- ------------------ ---------------
-  No                   2,847            \$59.87       \$170,436
-  Yes                  1,053            \$59.49        \$62,645
-
-The average purchase amount is very similar between subscribers and
-non-subscribers, while non-subscribers contribute substantially more
-total revenue because they represent a larger customer base.
-
-### Top-Rated Products
-
-The five products with the highest average review ratings were:
-
-1.  Gloves
-2.  Sandals
-3.  Boots
-4.  Hat
-5.  Skirt
-
-### Shipping
-
-  Shipping Type     Average Purchase (USD)
-  --------------- ------------------------
-  Express                          \$60.48
-  Standard                         \$58.46
-
-Express-shipping customers show a slightly higher average purchase
-amount.
-
-### Customer Segmentation
-
-  Segment       Customers
-  ----------- -----------
-  Loyal             3,116
-  Returning           701
-  New                  83
-
-The dataset is heavily concentrated toward customers with a high number
-of previous purchases.
-
-### Discount Dependence
-
-The products with the highest proportion of discounted purchases
-include:
-
--   Hat
--   Sneakers
--   Coat
--   Sweater
--   Pants
-
-### Revenue by Age Group
-
-  Age Group       Revenue (USD)
-  ------------- ---------------
-  Young Adult          \$62,143
-  Middle-aged          \$59,197
-  Adult                \$55,978
-  Senior               \$55,763
-
-Young Adults contribute the highest revenue among the four age groups in
-this dataset.
-
-------------------------------------------------------------------------
-
-# 4. Power BI Dashboard
-
-The cleaned and analyzed customer data was used to build an interactive
-Power BI dashboard.
-
-### Dashboard KPIs
-
-The dashboard includes:
-
--   Number of Customers
--   Average Purchase Amount
--   Average Review Rating
-
-### Visualizations
-
-The dashboard explores:
-
--   Revenue by Category
--   Sales by Category
--   Revenue by Age Group
--   Sales by Age Group
--   Subscription Status
--   Customer demographics
-
-### Interactive Filters
-
-The dashboard includes slicers for:
-
--   Subscription Status
--   Gender
--   Category
--   Shipping Type
-
-These filters allow users to interactively explore customer behavior and
-see how the key metrics change across different segments.
-
-------------------------------------------------------------------------
-
-## Dashboard Preview
-
-Add your dashboard screenshot here:
-
-``` text
-![Customer Behavior Dashboard](images/customer_behavior_dashboard.png)
-```
-
-If you do not have an image yet, export a screenshot from the Power BI
-dashboard and save it inside an `images` folder.
-
-------------------------------------------------------------------------
-
-# 5. Project Structure
-
-``` text
-customer-shopping-behavior-analysis/
-│
-├── data/
-│   └── customer_shopping_behavior.csv
-│
-├── notebooks/
-│   └── Customer_Shopping_Behavior_Analysis.ipynb
-│
-├── sql/
-│   └── customer_behavior_sql_queries.sql
-│
-├── dashboard/
-│   └── customer_behavior_dashboard.pbix
-│
-├── images/
-│   └── customer_behavior_dashboard.png
-│
-└── README.md
-```
-
-------------------------------------------------------------------------
-
-# 6. How to Run the Project
-
-## Step 1 --- Clone the Repository
-
-``` bash
-git clone <your-repository-url>
-cd customer-shopping-behavior-analysis
-```
-
-## Step 2 --- Install Python Dependencies
-
-``` bash
-pip install pandas sqlalchemy psycopg2-binary jupyter
-```
-
-## Step 3 --- Run the Notebook
-
-Open:
-
-``` text
-Customer_Shopping_Behavior_Analysis.ipynb
-```
-
-Run the notebook to:
-
--   Load the dataset
--   Explore the data
--   Clean missing values
--   Standardize column names
--   Create engineered features
--   Prepare the dataset for SQL analysis
-
-## Step 4 --- Set Up PostgreSQL
-
-Create a PostgreSQL database named:
-
-``` text
-customer_behavior
-```
-
-Create/load the cleaned dataset into the:
-
-``` text
-customer
-```
-
-table.
-
-Update the database connection credentials in the notebook before
-running the PostgreSQL loading section.
-
-## Step 5 --- Run SQL Analysis
-
-Open:
-
-``` text
-customer_behavior_sql_queries.sql
-```
-
-Run the queries in PostgreSQL/pgAdmin to reproduce the business
-analysis.
-
-## Step 6 --- Open the Power BI Dashboard
-
-Open:
-
-``` text
-customer_behavior_dashboard.pbix
-```
-
-If required, update the database connection to your local PostgreSQL
-instance.
-
-------------------------------------------------------------------------
-
-# 7. Skills Demonstrated
-
-This project demonstrates practical experience with:
-
-**Data Analytics** - Data cleaning - Exploratory data analysis - Feature
-engineering - Customer segmentation - Business-oriented analysis
-
-**Python** - Pandas - Data transformation - Missing-value handling -
-Categorical feature engineering
-
-**SQL** - Aggregations - Subqueries - CTEs - CASE statements - Window
-functions - Conditional aggregation - Business problem solving
-
-**Data Visualization** - Power BI - KPI cards - Interactive charts -
-Slicers - Dashboard design
-
-**Database** - PostgreSQL - pgAdmin - SQLAlchemy
-
-------------------------------------------------------------------------
-
-# 8. Business Takeaways
-
-The analysis provides several useful business perspectives:
-
--   Male customers contribute a larger share of revenue in this dataset.
--   Subscription status does not correspond to a higher average purchase
-    amount in the available data.
--   Express-shipping customers have a slightly higher average purchase
-    amount than Standard-shipping customers.
--   The customer base is dominated by loyal customers based on
-    previous-purchase count.
--   Some products have a much higher dependence on discounts than
-    others.
--   Young Adults generate the highest revenue among the defined age
-    groups.
--   Highly rated products can be identified for potential marketing and
-    merchandising decisions.
-
-These findings can be further investigated with additional
-transaction-level and customer-history data.
-
-------------------------------------------------------------------------
-
-# 9. Limitations
-
-This project is based on a customer-behavior snapshot rather than a
-complete transactional database.
-
-Important limitations include:
-
--   No complete transaction history for individual customers
--   Previous purchases are represented as a count rather than individual
-    transactions
--   Purchase frequency is categorical in the original dataset
--   The analysis does not establish causation between customer behavior
-    and business outcomes
--   The dataset does not provide enough historical information for true
-    customer lifetime value or retention analysis
-
-------------------------------------------------------------------------
-
-# 10. Future Improvements
-
-The project can be extended by adding:
-
--   Customer Lifetime Value (CLV)
--   RFM customer segmentation
--   Cohort analysis
--   Customer retention analysis
--   Churn prediction
--   Purchase prediction
--   Recommendation systems
--   Time-series sales analysis
--   Advanced ML-based customer segmentation
-
-------------------------------------------------------------------------
-
-## Author
-
-**Anwesh Bindhani**
-
-A data analytics portfolio project focused on transforming raw customer
-data into actionable business insights using Python, SQL, and Power BI.
-
-------------------------------------------------------------------------
-
-## Disclaimer
-
-This project is intended for educational and portfolio purposes. The
-insights are based on the available dataset and should not be
-interpreted as definitive business conclusions without additional
-transactional and customer-level data.
+## ⚖️ Ethics, Compliance & Disclaimers
+
+- **Synthetic Demo Data:** All demo products utilize synthetic ASINs (`SYN-KUR-xxx`) and RFC 2606 sanitized URLs (`https://example.com/dp/{asin}`).
+- **Observation Proxy:** Review counts represent customer engagement and observation velocity, **not** actual unit sales or competitor turnover.
+- **Domain Denylist:** Outbound HTTP requests to Amazon commercial domains are blocked at the networking layer.
+- **Isolated Legacy Files:** Historical customer shopping behavior analysis files are quarantined in `legacy/customer-shopping/` with zero runtime dependencies.
+
+For detailed documentation, refer to:
+- [Data Dictionary](docs/data-dictionary.md)
+- [System Limitations](docs/limitations.md)
+- [Demo Presentation Script](docs/demo-script.md)
+- [API Contract Specification](docs/api-contract.md)
+- [Final Status Report](docs/STATUS_REPORT.md)

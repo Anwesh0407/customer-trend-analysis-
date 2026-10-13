@@ -1,0 +1,194 @@
+{
+  "market": {
+    "sample_size": 32,
+    "price_metrics": {
+      "min": 449.0,
+      "q1": 666.5,
+      "median": 859.5,
+      "q3": 961.5,
+      "max": 1850.0,
+      "n": 32
+    },
+    "price_bands": [
+      {
+        "band_name": "0-499",
+        "min_price": 0.0,
+        "max_price": 499.99,
+        "product_count": 4,
+        "avg_rating": 3.7,
+        "share_pct": 12.5
+      },
+      {
+        "band_name": "500-999",
+        "min_price": 500.0,
+        "max_price": 999.99,
+        "product_count": 21,
+        "avg_rating": 4.28,
+        "share_pct": 65.6
+      },
+      {
+        "band_name": "1000-1499",
+        "min_price": 1000.0,
+        "max_price": 1499.99,
+        "product_count": 6,
+        "avg_rating": 4.22,
+        "share_pct": 18.8
+      },
+      {
+        "band_name": "1500-1999",
+        "min_price": 1500.0,
+        "max_price": 1999.99,
+        "product_count": 1,
+        "avg_rating": 4.4,
+        "share_pct": 3.1
+      },
+      {
+        "band_name": "2000-2999",
+        "min_price": 2000.0,
+        "max_price": 2999.99,
+        "product_count": 0,
+        "avg_rating": 0.0,
+        "share_pct": 0.0
+      },
+      {
+        "band_name": "3000+",
+        "min_price": 3000.0,
+        "max_price": 999999.0,
+        "product_count": 0,
+        "avg_rating": 0.0,
+        "share_pct": 0.0
+      }
+    ],
+    "rating_metrics": {
+      "median": 4.25,
+      "mean": 4.2,
+      "n": 32
+    },
+    "discount_bands": {
+      "0-19%": 0,
+      "20-39%": 29,
+      "40-59%": 3,
+      "60%+": 0
+    },
+    "brand_metrics": {
+      "total_brands": 8,
+      "top_5_share_pct": 75.0,
+      "top_brands": {
+        "FabricEra Synthetic": 6,
+        "UtkalLoom Synthetic": 5,
+        "KalingaCraft Synthetic": 5,
+        "UtkalKhadi Synthetic": 4,
+        "PuriThreads Synthetic": 4
+      },
+      "n": 32
+    },
+    "attribute_counts": {
+      "colours": {
+        "Blue": 7,
+        "Maroon": 5,
+        "Yellow": 5,
+        "Black": 4,
+        "Green": 4,
+        "White": 4,
+        "Pink": 3
+      },
+      "materials": {
+        "Cotton": 16,
+        "Rayon": 7,
+        "Chanderi": 4,
+        "Cotton Silk": 4,
+        "Cotton Blend": 1
+      },
+      "patterns": {
+        "Solid": 7,
+        "Printed": 7,
+        "Floral": 5,
+        "Embroidered": 3,
+        "Geometric": 3,
+        "Woven": 3,
+        "Embellished": 2,
+        "Striped": 1,
+        "Checkered": 1
+      },
+      "sizes": {
+        "[\"S\"": 13,
+        "\"M\"": 16,
+        "\"L\"": 26,
+        "\"XL\"]": 18,
+        "[\"M\"": 15,
+        "\"XL\"": 9,
+        "\"XXL\"]": 4,
+        "[\"XS\"": 3,
+        "\"S\"": 3,
+        "\"L\"]": 5,
+        "[\"L\"": 1,
+        "\"XXL\"": 3,
+        "\"3XL\"]": 5
+      }
+    },
+    "completeness": {
+      "asin": 100.0,
+      "product_name": 100.0,
+      "category": 100.0,
+      "brand": 100.0,
+      "price": 100.0,
+      "mrp": 100.0,
+      "discount_pct": 100.0,
+      "rating": 100.0,
+      "review_count": 100.0,
+      "colour": 100.0,
+      "material": 100.0,
+      "pattern": 100.0,
+      "sizes": 100.0,
+      "seller": 100.0,
+      "availability": 100.0,
+      "product_url": 100.0,
+      "source": 100.0,
+      "collected_at": 100.0
+    },
+    "attention_concentration": {
+      "top_10_pct_review_share": 26.6,
+      "note": "Attention concentration proxy only. Review counts are not sales counts."
+    }
+  },
+  "opportunities": {
+    "insights_suppressed": false,
+    "sample_size": 32,
+    "insights": [
+      {
+        "id": "opp_thin_well_rated_band",
+        "title": "Undersupplied Quality Tier in 1000-1499 Band",
+        "type": "price_opportunity",
+        "observation": "6 listings observed in the 1000-1499 band with a high average rating of 4.22 \u2605.",
+        "hypothesis": "Buyers show high satisfaction in 1000-1499, but seller concentration is low (18.8% of catalog).",
+        "evidence": "n=6 listings with average rating 4.22 \u2605 vs market median 4.25 \u2605.",
+        "sample_size": 6,
+        "confidence": "moderate",
+        "limitations": "Low listing counts may indicate low shopper query volume rather than unmet demand."
+      },
+      {
+        "id": "opp_extended_size_gap",
+        "title": "Limited Availability of Extended Sizes (3XL+)",
+        "type": "size_coverage",
+        "observation": "Only 0 of 32 listings explicitly offer sizes 3XL or larger.",
+        "hypothesis": "Vendors primarily stock S-XL, creating an undersupplied opportunity for extended plus sizes.",
+        "evidence": "0 out of 32 listings observed offering 3XL+.",
+        "sample_size": 0,
+        "confidence": "low",
+        "limitations": "Catalog data may omit extended sizes that are offered as child variant listings."
+      }
+    ],
+    "standing_limitations": [
+      "Market metrics reflect a point-in-time public listing snapshot.",
+      "Non-random sample of active listings; variants are counted as separate rows.",
+      "Review ratings reflect self-selected customer sentiment, not verified purchase rates.",
+      "Review counts represent cumulative customer attention, not current unit sales or revenue."
+    ]
+  },
+  "standing_limitations": [
+    "Market metrics reflect a point-in-time public listing snapshot.",
+    "Non-random sample of active listings; variants are counted as separate rows.",
+    "Review ratings reflect self-selected customer sentiment, not verified purchase rates.",
+    "Review counts represent cumulative customer attention, not current unit sales or revenue."
+  ]
+}

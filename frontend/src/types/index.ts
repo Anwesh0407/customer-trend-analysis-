@@ -1,127 +1,216 @@
+/**
+ * TypeScript Data Contracts matching backend OpenAPI Schema (docs/openapi.json)
+ */
+
+export interface EnvelopeMeta {
+  niche?: string;
+  sample_size: number;
+  as_of: string;
+  data_mode: 'demo' | 'synthetic' | 'real' | 'mixed' | string;
+  sources: string[];
+  limitations: string[];
+}
+
+export interface EvidenceEnvelope<T> {
+  data: T;
+  meta: EnvelopeMeta;
+}
+
 export interface Product {
   asin: string;
   product_name: string;
   category: string;
-  subcategory: string;
   brand: string;
-  price_inr: number;
-  mrp_inr: number;
-  discount_pct: number;
-  rating: number;
+  price?: number | null;
+  mrp?: number | null;
+  discount_pct?: number | null;
+  rating?: number | null;
   review_count: number;
-  color: string;
-  material: string;
-  pattern: string;
-  available_sizes: string[];
-  seller: string;
-  availability: string;
-  product_url: string;
-  badge?: string;
-  badge_type?: string;
-  sentiment?: string;
-  price_position?: string;
-  rating_position?: string;
-  competition?: string;
-  opportunity?: string;
+  colour?: string | null;
+  material?: string | null;
+  pattern?: string | null;
+  sizes: string[];
+  seller?: string | null;
+  availability?: string | null;
+  product_url?: string | null;
+  source: string;
+  collected_at: string;
+  // Position / percentiles when viewed in product details
+  price_percentile?: number | null;
+  rating_percentile?: number | null;
+  quality_flags?: string[];
+}
+
+export interface ProductListResponse {
+  items: Product[];
+  total: number;
+  page: number;
+  page_size: number;
+}
+
+export interface Category {
+  id?: number;
+  name: string;
+  display_name: string;
+  active: boolean;
+  product_count: number;
+  last_updated?: string | null;
+  data_mode: string;
+}
+
+export interface NicheFilter {
+  category?: string;
+  price_min?: number | null;
+  price_max?: number | null;
+  brands?: string[];
+  colours?: string[];
+  materials?: string[];
+  patterns?: string[];
+  sizes?: string[];
+  min_rating?: number | null;
+  min_reviews?: number | null;
+  availability?: string | null;
+  keyword?: string | null;
+}
+
+export interface Niche {
+  id: string;
+  name: string;
+  category: string;
+  description?: string;
+  filter: NicheFilter;
+  sample_size?: number;
+  created_at?: string;
+}
+
+export interface MarketSummary {
+  sample_size: number;
+  price: {
+    min: number | null;
+    p25: number | null;
+    median: number | null;
+    p75: number | null;
+    max: number | null;
+    mean: number | null;
+  };
+  rating: {
+    median: number | null;
+    mean: number | null;
+    unrated_count: number;
+    distribution: Record<string, number>;
+  };
+  discount: {
+    median: number | null;
+    mean: number | null;
+    zero_discount_count: number;
+    deep_discount_count: number;
+  };
+  price_bands: Record<string, number>;
+  brands: {
+    unique_count: number;
+    top_brands: Record<string, number>;
+    top_5_share_pct: number | null;
+  };
+  colours: Record<string, number>;
+  materials: Record<string, number>;
+  patterns: Record<string, number>;
+  sizes: Record<string, number>;
+  availability: Record<string, number>;
+  sellers: {
+    unique_count: number;
+    top_sellers: Record<string, number>;
+  };
+  completeness: Record<string, number>;
+  concentration: {
+    top_10_pct_listing_share: number | null;
+    interpretation: string;
+  };
+}
+
+export interface PreliminaryInsight {
+  rule_id: string;
+  rule_name: string;
+  observation: string;
+  hypothesis: string;
+  evidence: Record<string, any>;
+  sample_size: number;
+  confidence: 'very_low' | 'low' | 'moderate' | string;
+  limitations: string[];
+}
+
+export interface OpportunityAnalysis {
+  sample_size: number;
+  suppressed: boolean;
+  suppression_reason?: string | null;
+  insights: PreliminaryInsight[];
 }
 
 export interface ReviewItem {
   review_id: string;
   product_id: string;
   rating: number;
-  title: string;
-  text: string;
-  date: string;
+  review_title?: string | null;
+  review_text?: string | null;
+  review_date?: string | null;
   source: string;
-  sentiment: string;
+  collected_at: string;
 }
 
-export interface ReviewInsight {
-  positive_drivers: string[];
-  recurring_complaints: string[];
-  sentiment_distribution: {
-    positive_pct: number;
-    neutral_pct: number;
-    negative_pct: number;
-  };
-  total_reviews_analyzed: number;
-  avg_rating: number;
-  samples: ReviewItem[];
+export interface ReviewSummary {
+  total_reviews: number;
+  avg_rating: number | null;
+  rating_distribution: Record<string, number>;
+  orphan_review_count: number;
+  coverage_pct: number;
+  sentiment_planned_notice: string;
 }
 
-export interface AnalyticsOverview {
-  total_products: number;
-  median_price_inr: number;
-  min_price_inr: number;
-  max_price_inr: number;
-  avg_rating: number;
-  median_rating: number;
-  sample_size: number;
-  avg_discount_pct: number;
-  dominant_material: string;
-  dominant_color: string;
-  dominant_price_band: string;
-}
-
-export interface PriceBand {
-  band_name: string;
-  min_price: number;
-  max_price: number;
-  product_count: number;
-  avg_rating: number;
-  competition_density: string;
-  opportunity_level: string;
-}
-
-export interface PriceAnalytics {
-  price_bands: PriceBand[];
-  sweet_spot: {
-    band: string;
-    recommended_launch_price: string;
-    intro_coupon_target: string;
-    rationale: string;
-  };
-}
-
-export interface AttributeBreakdown {
-  materials: Record<string, number>;
-  colors: Record<string, number>;
-  patterns: Record<string, number>;
-  brands: Record<string, number>;
+export interface ReviewListResponse {
+  items: ReviewItem[];
+  total: number;
+  page: number;
+  page_size: number;
 }
 
 export interface Recommendation {
   id: string;
+  rule_name: string;
   title: string;
-  badge: string;
-  confidence_pct: number;
-  what_observed: string;
-  why_it_matters: string;
-  evidence_sample_size: string;
-  what_to_do: string;
-  limitations: string;
-  sourcing_specs?: {
-    fabric: string;
-    test_range: string;
-    colors: string;
-    priority_sizes: string;
-  };
-  estimated_margin?: string;
-}
-
-export interface NicheState {
   category: string;
-  location: string;
-  priceMax: number;
-  material: string;
-  activeTab: string;
-  searchQuery: string;
+  recommendation_type: string;
+  confidence: 'very_low' | 'low' | 'moderate' | string;
+  n: number;
+  threshold_values: Record<string, any>;
+  computed_evidence: Record<string, any>;
+  why_this: string;
+  sourcing_specs?: Record<string, string> | null;
+  limitations: string[];
 }
 
-export interface ChatMessage {
-  id: string;
-  sender: 'user' | 'assistant';
-  text: string;
-  evidence?: string[];
-  actions?: string[];
+export interface RecommendationListResponse {
+  items: Recommendation[];
+  total: number;
+}
+
+export interface ChatRequest {
+  question: string;
+  niche_id?: string;
+  niche_filter?: NicheFilter;
+}
+
+export interface ChatEvidenceItem {
+  metric: string;
+  value: any;
+  n: number;
+  tool: string;
+  niche: string;
+}
+
+export interface ChatResponse {
+  answer: string;
+  evidence: ChatEvidenceItem[];
+  confidence: 'very_low' | 'low' | 'moderate' | string;
+  limitations: string[];
+  follow_up_suggestions: string[];
+  mode: 'gemini' | 'demo';
 }

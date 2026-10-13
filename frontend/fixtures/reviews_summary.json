@@ -1,0 +1,31 @@
+{
+  "data": {
+    "total_reviews": 10,
+    "average_rating": 3.8,
+    "rating_distribution": {
+      "1": 1,
+      "2": 2,
+      "3": 0,
+      "4": 2,
+      "5": 5
+    },
+    "coverage_pct": 25.0,
+    "sentiment_badge": "planned",
+    "note": "Review sentiment analysis is a planned future capability."
+  },
+  "meta": {
+    "niche": "All Listings (Whole Category)",
+    "sample_size": 32,
+    "as_of": "2026-10-13T22:08:37.401240+00:00",
+    "data_mode": "demo",
+    "sources": [
+      "synthetic_review"
+    ],
+    "limitations": [
+      "Market metrics reflect a point-in-time public catalog snapshot.",
+      "Non-random sample of active listings; variants are counted as separate rows.",
+      "Review ratings reflect self-selected customer sentiment, not verified purchase rates.",
+      "Review counts represent cumulative customer attention, not current unit sales or revenue."
+    ]
+  }
+}

@@ -1,21 +1,50 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ava-navy: #131921;
-  --color-ava-navyLight: #232f3e;
-  --color-ava-orange: #ff9900;
-  --color-ava-orangeHover: #f08800;
-  --color-ava-accent: #febd69;
-  --color-ava-teal: #007185;
-  --color-ava-green: #067d62;
-  --color-ava-red: #b12704;
-  --color-ava-surface: #f3f4f6;
-  --color-ava-border: #d5d9d9;
-  --color-ava-card: #ffffff;
+  --font-sans: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Stitch Custom Palette */
+  --color-surface: #faf8ff;
+  --color-surface-dim: #d2d9f4;
+  --color-surface-bright: #faf8ff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f2f3ff;
+  --color-surface-container: #eaedff;
+  --color-surface-container-high: #e2e7ff;
+  --color-surface-container-highest: #dae2fd;
+  --color-on-surface: #131b2e;
+  --color-on-surface-variant: #45474b;
+  --color-outline: #75777c;
+  --color-outline-variant: #c5c6cb;
+  --color-primary: #131921;
+  --color-primary-container: #161c24;
+  --color-on-primary: #ffffff;
+  --color-secondary: #8a5100;
+  --color-secondary-container: #fe9800;
+  --color-on-secondary-fixed: #2c1600;
+  --color-on-secondary-fixed-variant: #693c00;
+  --color-secondary-fixed: #ffdcbd;
+  --color-secondary-fixed-dim: #ffb86f;
+
+  /* Amazon Brand Tokens */
+  --color-amazon-orange: #ff9900;
+  --color-amazon-orange-hover: #f08800;
+  --color-amazon-amber: #febd69;
+  --color-amazon-navy: #131921;
+  --color-amazon-navylight: #232f3e;
+  --color-amazon-teal: #007185;
+  --color-badge-green: #067d62;
 }
 
 * {
   -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
 }
 
 ::-webkit-scrollbar {
@@ -24,7 +53,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #f2f3ff;
 }
 
 ::-webkit-scrollbar-thumb {
