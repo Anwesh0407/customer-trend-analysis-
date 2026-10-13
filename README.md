@@ -1,4 +1,62 @@
-# Customer Shopping Behavior Analysis
+# Amazon Vendor Assist (AVA) & Customer Trend Analytics
+
+> **AVA Tagline:** *Sell smarter. Sell what people want.*  
+> A vendor intelligence platform helping small and local businesses make better sourcing, pricing, and merchandising decisions using marketplace data, analytics, and AI.
+
+---
+
+## 🚀 AVA Quickstart Commands
+
+### 1. Backend (FastAPI + Python 3.12)
+```bash
+# Activate virtual environment
+source backend/.venv/bin/activate
+
+# Run backend server (port 8000)
+PYTHONPATH=. backend/.venv/bin/uvicorn backend.app.main:app --host 0.0.0.0 --port 8000 --reload
+```
+- API Documentation: `http://localhost:8000/docs`
+- Health Endpoint: `http://localhost:8000/api/health`
+
+### 2. Frontend (React 19 + TypeScript + Vite + Tailwind CSS)
+```bash
+cd frontend
+npm install
+npm run dev
+```
+- Web Application: `http://localhost:5173`
+
+### 3. Run Backend Test Suite
+```bash
+PYTHONPATH=. backend/.venv/bin/pytest backend/tests/test_api.py
+```
+
+---
+
+## 📁 Repository Structure
+```text
+Amazon vendor assist project/
+├── frontend/             # React 19 + TypeScript + Vite + Tailwind CSS (Stitch UI)
+├── backend/              # FastAPI + SQLAlchemy + Pydantic + ML scoring
+│   ├── app/              # Core, API routes, models, schemas, services
+│   └── tests/            # Pytest test suite (100% passing)
+├── data/
+│   ├── sample/           # Curated Kurtas & Kurtis sample dataset & reviews (JSON/CSV)
+│   ├── raw/              # Raw data intake (git-ignored)
+│   └── processed/        # Cleaned dataset artifacts
+├── legacy_analysis/      # Preserved legacy customer behavior analytics project
+│   ├── notebooks/        # Jupyter notebook
+│   ├── sql/              # 10 business SQL queries
+│   ├── dashboard/        # Power BI .pbix file
+│   └── data/             # customer_shopping_behavior.csv
+├── .env.example          # Safe configuration template (zero committed secrets)
+├── .gitignore            # Git exclusion rules
+└── README.md
+```
+
+---
+
+# Legacy Project: Customer Shopping Behavior Analysis
 
 An end-to-end data analytics project that analyzes customer shopping
 behavior using **Python, PostgreSQL/SQL, and Power BI**.

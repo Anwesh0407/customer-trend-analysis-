@@ -1,0 +1,134 @@
+[
+  {
+    "review_id": "rev_01",
+    "product_id": "B08X1K9P11",
+    "rating": 5.0,
+    "title": "Very comfortable pure cotton for summer in Odisha",
+    "text": "The cloth is 100% pure cotton, super breathable in hot weather. Color did not bleed after first wash. Perfect fitting for size L.",
+    "date": "2026-03-14",
+    "source": "customer_review",
+    "sentiment": "positive",
+    "collected_at": "2026-10-13T15:13:33.218064+00:00"
+  },
+  {
+    "review_id": "rev_02",
+    "product_id": "B08X1K9P11",
+    "rating": 4.0,
+    "title": "Good quality but slightly loose around waist",
+    "text": "Print is vibrant and exactly as shown. Fabric is dense and non-transparent. Stitching around armholes could be slightly cleaner.",
+    "date": "2026-03-22",
+    "source": "customer_review",
+    "sentiment": "positive",
+    "collected_at": "2026-10-13T15:13:33.218064+00:00"
+  },
+  {
+    "review_id": "rev_03",
+    "product_id": "B08X1K9P11",
+    "rating": 2.0,
+    "title": "Shrunk after machine washing",
+    "text": "Shrunk nearly one full inch after machine wash. Recommend buying one size larger if you machine wash.",
+    "date": "2026-04-01",
+    "source": "customer_review",
+    "sentiment": "negative",
+    "collected_at": "2026-10-13T15:13:33.218064+00:00"
+  },
+  {
+    "review_id": "rev_04",
+    "product_id": "B09Y2L8Q22",
+    "rating": 5.0,
+    "title": "Stunning Chanderi look for puja and festivals",
+    "text": "The maroon color is royal and rich. Flare is graceful and embroidery work on neck gives expensive feel at \u20b9949.",
+    "date": "2026-02-18",
+    "source": "customer_review",
+    "sentiment": "positive",
+    "collected_at": "2026-10-13T15:13:33.218064+00:00"
+  },
+  {
+    "review_id": "rev_05",
+    "product_id": "B09Y2L8Q22",
+    "rating": 3.0,
+    "title": "Needs inner lining for comfort",
+    "text": "Aesthetic is good but fabric can feel itchy without inner lining during humid days. Dry clean recommended.",
+    "date": "2026-03-05",
+    "source": "customer_review",
+    "sentiment": "neutral",
+    "collected_at": "2026-10-13T15:13:33.218064+00:00"
+  },
+  {
+    "review_id": "rev_06",
+    "product_id": "B07Z3M7R33",
+    "rating": 2.0,
+    "title": "Fabric is too thin and transparent under direct light",
+    "text": "At 599 you get what you pay for. Looks nice on model but very thin rayon fabric. Definitely needs a slip underneath.",
+    "date": "2026-01-29",
+    "source": "customer_review",
+    "sentiment": "negative",
+    "collected_at": "2026-10-13T15:13:33.218064+00:00"
+  },
+  {
+    "review_id": "rev_07",
+    "product_id": "B07Z3M7R33",
+    "rating": 4.0,
+    "title": "Decent for daily home wear",
+    "text": "Pockets are very useful. Soft material for casual home use. Color stayed after couple washes.",
+    "date": "2026-02-11",
+    "source": "customer_review",
+    "sentiment": "positive",
+    "collected_at": "2026-10-13T15:13:33.218064+00:00"
+  },
+  {
+    "review_id": "rev_08",
+    "product_id": "B09W4N6S44",
+    "rating": 5.0,
+    "title": "Authentic Khadi feel, great office wear",
+    "text": "Superb texture. Doesn't crush easily like thin cotton. Colleagues asked where I bought it.",
+    "date": "2026-03-10",
+    "source": "customer_review",
+    "sentiment": "positive",
+    "collected_at": "2026-10-13T15:13:33.218064+00:00"
+  },
+  {
+    "review_id": "rev_09",
+    "product_id": "B08V5O5T55",
+    "rating": 4.0,
+    "title": "Bright cheerful yellow, decent collar finish",
+    "text": "Good formal look with collar. Needs gentle iron. Price of 749 is fair for the quality.",
+    "date": "2026-03-25",
+    "source": "customer_review",
+    "sentiment": "positive",
+    "collected_at": "2026-10-13T15:13:33.218064+00:00"
+  },
+  {
+    "review_id": "rev_10",
+    "product_id": "B08T7Q3V77",
+    "rating": 2.0,
+    "title": "Color faded on collar after first rinse",
+    "text": "Cheap dye quality. Disappointed with durability even though price was under 500.",
+    "date": "2026-03-02",
+    "source": "customer_review",
+    "sentiment": "negative",
+    "collected_at": "2026-10-13T15:13:33.218064+00:00"
+  },
+  {
+    "review_id": "rev_11",
+    "product_id": "B09S8R2W88",
+    "rating": 5.0,
+    "title": "Mulmul cotton is heavenly in heat",
+    "text": "Incredibly soft and lightweight. Color is subtle pastel blue. High quality stitching.",
+    "date": "2026-04-05",
+    "source": "customer_review",
+    "sentiment": "positive",
+    "collected_at": "2026-10-13T15:13:33.218064+00:00"
+  },
+  {
+    "review_id": "rev_12",
+    "product_id": "B08R9S1X99",
+    "rating": 5.0,
+    "title": "Odisha ikat pattern is very well executed",
+    "text": "Very proud to wear local artisan inspired motifs. Fits true to size chart.",
+    "date": "2026-03-19",
+    "source": "customer_review",
+    "sentiment": "positive",
+    "collected_at": "2026-10-13T15:13:33.218064+00:00"
+  }
+]
