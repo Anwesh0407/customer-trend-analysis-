@@ -214,3 +214,19 @@ export interface ChatResponse {
   follow_up_suggestions: string[];
   mode: 'gemini' | 'demo';
 }
+
+export interface UserProfile {
+  name: string;
+  age: number | string;
+  gender: 'Female' | 'Male' | 'Non-binary' | 'Prefer not to say' | string;
+  email: string;
+  phone: string;
+  address: string;
+  city: string;
+  state: string;
+  pincode: string;
+  businessName: string;
+  sellerCategory: string;
+  isVerified: boolean;
+  registeredAt?: string;
+}

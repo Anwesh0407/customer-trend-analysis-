@@ -10,6 +10,9 @@ import {
   Search,
   ChevronDown,
   Layers,
+  User,
+  LogOut,
+  CheckCircle2,
 } from 'lucide-react';
 import { api } from './services/api';
 import type {
@@ -23,6 +26,7 @@ import type {
   ReviewSummary,
   RecommendationListResponse,
   EvidenceEnvelope,
+  UserProfile,
 } from './types';
 import { DemoDataBanner } from './components/Badges';
 
@@ -36,6 +40,7 @@ import { ReviewsWorkspace } from './workspaces/ReviewsWorkspace';
 import { RecommendationsWorkspace } from './workspaces/RecommendationsWorkspace';
 import { ProductDetailsWorkspace } from './workspaces/ProductDetailsWorkspace';
 import { AskAvaWorkspace } from './workspaces/AskAvaWorkspace';
+import { LoginWorkspace } from './workspaces/LoginWorkspace';
 
 export type WorkspaceTab =
   | 'home'
@@ -46,7 +51,8 @@ export type WorkspaceTab =
   | 'reviews'
   | 'recommendations'
   | 'product_details'
-  | 'ask_ava';
+  | 'ask_ava'
+  | 'login';
 
 export function App() {
   const [activeTab, setActiveTab] = useState<WorkspaceTab>('home');
@@ -81,6 +87,42 @@ export function App() {
 
   // Meta & Backend
   const [backendStatus, setBackendStatus] = useState<any>(null);
+
+  // User Profile & Authentication State (Registration & OTP Flow)
+  const [userProfile, setUserProfile] = useState<UserProfile | null>(() => {
+    try {
+      const saved = localStorage.getItem('ava_user_profile');
+      if (saved) return JSON.parse(saved);
+    } catch {
+      // fallback
+    }
+    return {
+      name: 'Vandana Mohanty',
+      age: '31',
+      gender: 'Female',
+      email: 'vandana.kurtis@gmail.com',
+      phone: '9861023456',
+      businessName: 'Vandana Kurtis & Handlooms',
+      address: 'Plot 142, Saheed Nagar, Industrial Estate',
+      city: 'Bhubaneswar',
+      state: 'Odisha',
+      pincode: '751007',
+      sellerCategory: "Women's Kurtas & Kurtis",
+      isVerified: true,
+      registeredAt: '2026-10-14T03:00:00Z',
+    };
+  });
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+
+  const handleLoginSuccess = (profile: UserProfile) => {
+    setUserProfile(profile);
+    try {
+      localStorage.setItem('ava_user_profile', JSON.stringify(profile));
+    } catch {
+      // ignore
+    }
+    setActiveTab('home');
+  };
 
   // Initial load
   useEffect(() => {
@@ -287,15 +329,93 @@ export function App() {
               <ChevronDown className="w-3 h-3 text-gray-400 absolute right-2.5 top-2.5 pointer-events-none hidden lg:block" />
             </div>
 
-            {/* User Profile / Status Avatar */}
-            <div className="flex items-center gap-2 pl-2 border-l border-white/15">
-              <div className="w-7 h-7 rounded-full bg-slate-700 border border-amber-400/60 flex items-center justify-center font-bold text-xs text-amber-300">
-                VK
-              </div>
-              <div className="hidden xl:block text-left">
-                <div className="text-[11px] font-bold text-white leading-none">Vandana Kurtis</div>
-                <div className="text-[9px] text-gray-400 font-mono">Seller Central IN</div>
-              </div>
+            {/* User Profile / Status Avatar & Dropdown */}
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setShowProfileMenu((prev) => !prev)}
+                className="flex items-center gap-2 pl-2 border-l border-white/15 text-left cursor-pointer hover:opacity-90 transition"
+              >
+                <div className="w-7 h-7 rounded-full bg-slate-700 border border-amber-400/60 flex items-center justify-center font-bold text-xs text-amber-300">
+                  {userProfile
+                    ? userProfile.name
+                        .split(' ')
+                        .map((n) => n[0])
+                        .join('')
+                        .slice(0, 2)
+                        .toUpperCase()
+                    : 'VK'}
+                </div>
+                <div className="hidden xl:block text-left">
+                  <div className="text-[11px] font-bold text-white leading-none">
+                    {userProfile?.businessName || userProfile?.name || 'Vandana Kurtis'}
+                  </div>
+                  <div className="text-[9px] text-emerald-400 font-mono flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                    {userProfile?.isVerified ? 'Verified Vendor' : 'Seller Central IN'}
+                  </div>
+                </div>
+              </button>
+
+              {/* Profile Dropdown Menu */}
+              {showProfileMenu && (
+                <div className="absolute right-0 top-10 w-72 bg-white text-gray-900 rounded-xl shadow-xl border border-gray-200 p-4 z-50 text-xs space-y-3">
+                  <div className="flex items-start justify-between border-b border-gray-100 pb-3">
+                    <div>
+                      <div className="font-bold text-sm text-[#131b2e]">{userProfile?.name}</div>
+                      <div className="text-gray-500 text-[11px]">{userProfile?.email}</div>
+                    </div>
+                    <span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-bold flex items-center gap-1">
+                      <CheckCircle2 className="w-3 h-3" /> Verified
+                    </span>
+                  </div>
+
+                  <div className="space-y-1.5 text-[11px] text-gray-600">
+                    <div className="flex justify-between">
+                      <span className="text-gray-400">Store / Brand:</span>
+                      <span className="font-semibold text-gray-800">{userProfile?.businessName}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-400">Phone:</span>
+                      <span className="font-mono text-gray-800">+91 {userProfile?.phone}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-400">Demographics:</span>
+                      <span className="text-gray-800">{userProfile?.gender}, {userProfile?.age} yrs</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-400">Location:</span>
+                      <span className="text-gray-800">{userProfile?.city}, {userProfile?.state}</span>
+                    </div>
+                  </div>
+
+                  <div className="pt-2 border-t border-gray-100 space-y-1">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowProfileMenu(false);
+                        setActiveTab('login');
+                      }}
+                      className="w-full text-left py-2 px-2.5 rounded hover:bg-amber-50 text-[#8a5100] font-bold flex items-center justify-between transition cursor-pointer"
+                    >
+                      <span>Edit Info &amp; Re-verify OTP</span>
+                      <User className="w-3.5 h-3.5" />
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowProfileMenu(false);
+                        setActiveTab('login');
+                      }}
+                      className="w-full text-left py-2 px-2.5 rounded hover:bg-gray-100 text-gray-700 flex items-center justify-between transition cursor-pointer"
+                    >
+                      <span>Register New Seller Account</span>
+                      <LogOut className="w-3.5 h-3.5 text-gray-400" />
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -419,6 +539,19 @@ export function App() {
               >
                 <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                 <span>Ask AVA</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setActiveTab('login')}
+                className={`py-2 px-3 transition flex items-center gap-1.5 border-b-2 cursor-pointer ${
+                  activeTab === 'login'
+                    ? 'text-[#ff9900] border-[#ff9900] font-bold'
+                    : 'text-gray-300 hover:text-white border-transparent'
+                }`}
+              >
+                <User className="w-3.5 h-3.5" />
+                <span>Seller Onboarding</span>
               </button>
             </nav>
 
@@ -551,6 +684,14 @@ export function App() {
             nicheName={activeNiche?.name || `${selectedCategory} (All)`}
           />
         )}
+
+        {activeTab === 'login' && (
+          <LoginWorkspace
+            currentUser={userProfile}
+            onLoginSuccess={handleLoginSuccess}
+            onCancel={() => setActiveTab('home')}
+          />
+        )}
       </main>
 
       {/* Persistent Enterprise Footer (Exact Stitch Design) */}
@@ -570,6 +711,7 @@ export function App() {
             <button onClick={() => setActiveTab('categories')} className="hover:text-black cursor-pointer">Categories</button>
             <button onClick={() => setActiveTab('analytics')} className="hover:text-black cursor-pointer">Analytics Engine</button>
             <button onClick={() => setActiveTab('ask_ava')} className="hover:text-black cursor-pointer">AVA Intelligence</button>
+            <button onClick={() => setActiveTab('login')} className="hover:text-black cursor-pointer">Seller Onboarding / OTP</button>
           </div>
         </div>
       </footer>
