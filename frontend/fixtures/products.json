@@ -25,7 +25,7 @@
         "product_url": "https://example.com/products/SYN-KUR-003",
         "source": "synthetic_curated",
         "collected_at": "2026-10-13T21:44:27.765396",
-        "updated_at": "2026-10-13T21:44:29.138694",
+        "updated_at": "2026-10-13T22:08:41.021775",
         "percentile_in_niche": null,
         "quality_flags": []
       },
@@ -52,7 +52,7 @@
         "product_url": "https://example.com/products/SYN-KUR-011",
         "source": "synthetic_curated",
         "collected_at": "2026-10-13T21:44:27.765396",
-        "updated_at": "2026-10-13T21:44:29.140714",
+        "updated_at": "2026-10-13T22:08:41.023443",
         "percentile_in_niche": null,
         "quality_flags": []
       },
@@ -80,7 +80,7 @@
         "product_url": "https://example.com/products/SYN-KUR-001",
         "source": "synthetic_curated",
         "collected_at": "2026-10-13T21:44:27.765396",
-        "updated_at": "2026-10-13T21:44:29.136317",
+        "updated_at": "2026-10-13T22:08:41.021155",
         "percentile_in_niche": null,
         "quality_flags": []
       },
@@ -108,7 +108,7 @@
         "product_url": "https://example.com/products/SYN-KUR-026",
         "source": "synthetic_curated",
         "collected_at": "2026-10-13T21:44:27.765396",
-        "updated_at": "2026-10-13T21:44:29.143998",
+        "updated_at": "2026-10-13T22:08:41.026331",
         "percentile_in_niche": null,
         "quality_flags": []
       },
@@ -136,7 +136,7 @@
         "product_url": "https://example.com/products/SYN-KUR-017",
         "source": "synthetic_curated",
         "collected_at": "2026-10-13T21:44:27.765396",
-        "updated_at": "2026-10-13T21:44:29.142046",
+        "updated_at": "2026-10-13T22:08:41.024585",
         "percentile_in_niche": null,
         "quality_flags": []
       },
@@ -164,7 +164,7 @@
         "product_url": "https://example.com/products/SYN-KUR-002",
         "source": "synthetic_curated",
         "collected_at": "2026-10-13T21:44:27.765396",
-        "updated_at": "2026-10-13T21:44:29.137169",
+        "updated_at": "2026-10-13T22:08:41.021503",
         "percentile_in_niche": null,
         "quality_flags": []
       },
@@ -192,7 +192,7 @@
         "product_url": "https://example.com/products/SYN-KUR-020",
         "source": "synthetic_curated",
         "collected_at": "2026-10-13T21:44:27.765396",
-        "updated_at": "2026-10-13T21:44:29.142673",
+        "updated_at": "2026-10-13T22:08:41.025148",
         "percentile_in_niche": null,
         "quality_flags": []
       },
@@ -219,7 +219,7 @@
         "product_url": "https://example.com/products/SYN-KUR-032",
         "source": "synthetic_curated",
         "collected_at": "2026-10-13T21:44:27.765396",
-        "updated_at": "2026-10-13T21:44:29.145266",
+        "updated_at": "2026-10-13T22:08:41.028214",
         "percentile_in_niche": null,
         "quality_flags": []
       },
@@ -246,7 +246,7 @@
         "product_url": "https://example.com/products/SYN-KUR-007",
         "source": "synthetic_curated",
         "collected_at": "2026-10-13T21:44:27.765396",
-        "updated_at": "2026-10-13T21:44:29.139796",
+        "updated_at": "2026-10-13T22:08:41.022629",
         "percentile_in_niche": null,
         "quality_flags": []
       },
@@ -273,7 +273,7 @@
         "product_url": "https://example.com/products/SYN-KUR-014",
         "source": "synthetic_curated",
         "collected_at": "2026-10-13T21:44:27.765396",
-        "updated_at": "2026-10-13T21:44:29.141392",
+        "updated_at": "2026-10-13T22:08:41.024026",
         "percentile_in_niche": null,
         "quality_flags": []
       },
@@ -301,7 +301,7 @@
         "product_url": "https://example.com/products/SYN-KUR-005",
         "source": "synthetic_curated",
         "collected_at": "2026-10-13T21:44:27.765396",
-        "updated_at": "2026-10-13T21:44:29.139291",
+        "updated_at": "2026-10-13T22:08:41.022218",
         "percentile_in_niche": null,
         "quality_flags": []
       },
@@ -329,7 +329,7 @@
         "product_url": "https://example.com/products/SYN-KUR-009",
         "source": "synthetic_curated",
         "collected_at": "2026-10-13T21:44:27.765396",
-        "updated_at": "2026-10-13T21:44:29.140288",
+        "updated_at": "2026-10-13T22:08:41.023048",
         "percentile_in_niche": null,
         "quality_flags": []
       },
@@ -357,7 +357,7 @@
         "product_url": "https://example.com/products/SYN-KUR-022",
         "source": "synthetic_curated",
         "collected_at": "2026-10-13T21:44:27.765396",
-        "updated_at": "2026-10-13T21:44:29.143093",
+        "updated_at": "2026-10-13T22:08:41.025534",
         "percentile_in_niche": null,
         "quality_flags": []
       },
@@ -385,7 +385,7 @@
         "product_url": "https://example.com/products/SYN-KUR-015",
         "source": "synthetic_curated",
         "collected_at": "2026-10-13T21:44:27.765396",
-        "updated_at": "2026-10-13T21:44:29.141614",
+        "updated_at": "2026-10-13T22:08:41.024217",
         "percentile_in_niche": null,
         "quality_flags": []
       },
@@ -414,7 +414,7 @@
         "product_url": "https://example.com/products/SYN-KUR-028",
         "source": "synthetic_curated",
         "collected_at": "2026-10-13T21:44:27.765396",
-        "updated_at": "2026-10-13T21:44:29.144425",
+        "updated_at": "2026-10-13T22:08:41.027191",
         "percentile_in_niche": null,
         "quality_flags": []
       },
@@ -443,7 +443,7 @@
         "product_url": "https://example.com/products/SYN-KUR-008",
         "source": "synthetic_curated",
         "collected_at": "2026-10-13T21:44:27.765396",
-        "updated_at": "2026-10-13T21:44:29.140037",
+        "updated_at": "2026-10-13T22:08:41.022828",
         "percentile_in_niche": null,
         "quality_flags": []
       },
@@ -472,7 +472,7 @@
         "product_url": "https://example.com/products/SYN-KUR-013",
         "source": "synthetic_curated",
         "collected_at": "2026-10-13T21:44:27.765396",
-        "updated_at": "2026-10-13T21:44:29.141170",
+        "updated_at": "2026-10-13T22:08:41.023836",
         "percentile_in_niche": null,
         "quality_flags": []
       },
@@ -499,7 +499,7 @@
         "product_url": "https://example.com/products/SYN-KUR-004",
         "source": "synthetic_curated",
         "collected_at": "2026-10-13T21:44:27.765396",
-        "updated_at": "2026-10-13T21:44:29.139017",
+        "updated_at": "2026-10-13T22:08:41.022005",
         "percentile_in_niche": null,
         "quality_flags": []
       },
@@ -527,7 +527,7 @@
         "product_url": "https://example.com/products/SYN-KUR-025",
         "source": "synthetic_curated",
         "collected_at": "2026-10-13T21:44:27.765396",
-        "updated_at": "2026-10-13T21:44:29.143775",
+        "updated_at": "2026-10-13T22:08:41.026139",
         "percentile_in_niche": null,
         "quality_flags": []
       },
@@ -556,7 +556,7 @@
         "product_url": "https://example.com/products/SYN-KUR-018",
         "source": "synthetic_curated",
         "collected_at": "2026-10-13T21:44:27.765396",
-        "updated_at": "2026-10-13T21:44:29.142258",
+        "updated_at": "2026-10-13T22:08:41.024773",
         "percentile_in_niche": null,
         "quality_flags": []
       }
@@ -568,7 +568,7 @@
   "meta": {
     "niche": "All Listings (Whole Category)",
     "sample_size": 32,
-    "as_of": "2026-10-13T22:08:37.371399+00:00",
+    "as_of": "2026-10-13T22:30:15.964904+00:00",
     "data_mode": "demo",
     "sources": [
       "synthetic_curated"
