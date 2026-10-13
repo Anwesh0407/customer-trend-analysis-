@@ -81,6 +81,16 @@ app.include_router(recommendations.router, prefix="/api")
 app.include_router(assistant.router, prefix="/api")
 
 
+@app.get("/health")
+def root_health():
+    return {"status": "ok", "app": "AVA", "version": "0.2.0"}
+
+
+@app.get("/")
+def root_index():
+    return {"status": "ok", "app": "Amazon Vendor Assist (AVA)", "docs": "/docs"}
+
+
 @app.on_event("startup")
 def on_startup() -> None:
     logger.info("Initializing AVA database on startup...")
