@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import {
+  Home,
   Sliders,
   ShoppingBag,
   BarChart2,
@@ -26,6 +27,7 @@ import type {
 import { DemoDataBanner } from './components/Badges';
 
 // Workspaces
+import { HomeWorkspace } from './workspaces/HomeWorkspace';
 import { CategoriesWorkspace } from './workspaces/CategoriesWorkspace';
 import { DefineNicheWorkspace } from './workspaces/DefineNicheWorkspace';
 import { MarketResultsWorkspace } from './workspaces/MarketResultsWorkspace';
@@ -36,6 +38,7 @@ import { ProductDetailsWorkspace } from './workspaces/ProductDetailsWorkspace';
 import { AskAvaWorkspace } from './workspaces/AskAvaWorkspace';
 
 export type WorkspaceTab =
+  | 'home'
   | 'categories'
   | 'define_niche'
   | 'results'
@@ -46,7 +49,7 @@ export type WorkspaceTab =
   | 'ask_ava';
 
 export function App() {
-  const [activeTab, setActiveTab] = useState<WorkspaceTab>('results');
+  const [activeTab, setActiveTab] = useState<WorkspaceTab>('home');
 
   // Categories & Niches state
   const [categories, setCategories] = useState<Category[]>([]);
@@ -213,7 +216,7 @@ export function App() {
           <div className="flex items-center gap-6 flex-1 max-w-4xl">
             <div
               className="flex items-center gap-2.5 cursor-pointer shrink-0"
-              onClick={() => setActiveTab('results')}
+              onClick={() => setActiveTab('home')}
             >
               <div className="w-8 h-8 rounded bg-[#ff9900] flex items-center justify-center font-black text-[#131921] text-xs tracking-wider shadow-sm">
                 AVA
@@ -301,6 +304,19 @@ export function App() {
         <div className="border-t border-white/10 bg-[#232f3e]">
           <div className="max-w-7xl mx-auto px-4 lg:px-6 flex items-center justify-between text-xs overflow-x-auto no-scrollbar">
             <nav className="flex items-center gap-1 font-semibold whitespace-nowrap">
+              <button
+                type="button"
+                onClick={() => setActiveTab('home')}
+                className={`py-2 px-3 transition flex items-center gap-1.5 border-b-2 cursor-pointer ${
+                  activeTab === 'home'
+                    ? 'text-[#ff9900] border-[#ff9900] font-bold'
+                    : 'text-gray-300 hover:text-white border-transparent'
+                }`}
+              >
+                <Home className="w-3.5 h-3.5" />
+                <span>Home</span>
+              </button>
+
               <button
                 type="button"
                 onClick={() => setActiveTab('categories')}
@@ -441,6 +457,22 @@ export function App() {
 
       {/* Main Workspace Canvas */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        {activeTab === 'home' && (
+          <HomeWorkspace
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onSelectCategory={handleSelectCategory}
+            products={products}
+            analyticsEnvelope={analyticsEnvelope}
+            onNavigate={setActiveTab}
+            onSelectProduct={handleSelectProduct}
+            onAskAva={(_q) => {
+              setActiveTab('ask_ava');
+            }}
+            isLoading={isLoadingProducts}
+          />
+        )}
+
         {activeTab === 'categories' && (
           <CategoriesWorkspace
             categories={categories}
@@ -534,9 +566,10 @@ export function App() {
 
           <div className="flex items-center gap-4 text-xs font-medium">
             <span className="font-mono text-[11px] text-emerald-700">Data Latency: 12ms · API: {backendStatus?.status === 'ok' ? 'Online' : 'Connected'}</span>
-            <button onClick={() => setActiveTab('categories')} className="hover:text-black">Categories</button>
-            <button onClick={() => setActiveTab('analytics')} className="hover:text-black">Analytics Engine</button>
-            <button onClick={() => setActiveTab('ask_ava')} className="hover:text-black">AVA Intelligence</button>
+            <button onClick={() => setActiveTab('home')} className="hover:text-black cursor-pointer">Home</button>
+            <button onClick={() => setActiveTab('categories')} className="hover:text-black cursor-pointer">Categories</button>
+            <button onClick={() => setActiveTab('analytics')} className="hover:text-black cursor-pointer">Analytics Engine</button>
+            <button onClick={() => setActiveTab('ask_ava')} className="hover:text-black cursor-pointer">AVA Intelligence</button>
           </div>
         </div>
       </footer>
