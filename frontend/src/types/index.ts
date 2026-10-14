@@ -105,7 +105,16 @@ export interface MarketSummary {
     zero_discount_count: number;
     deep_discount_count: number;
   };
-  price_bands: Record<string, number>;
+  price_bands:
+    | Array<{
+        band_name?: string;
+        min_price?: number;
+        max_price?: number;
+        product_count?: number;
+        avg_rating?: number;
+        share_pct?: number;
+      }>
+    | Record<string, any>;
   brands: {
     unique_count: number;
     top_brands: Record<string, number>;

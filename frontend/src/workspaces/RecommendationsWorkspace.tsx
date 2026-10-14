@@ -242,9 +242,12 @@ export function RecommendationsWorkspace({
 
                       {/* Computed Evidence Pills */}
                       <div className="pt-2 border-t border-gray-200/60 flex flex-wrap gap-2 text-[11px] font-mono">
-                        {Object.entries(rec.computed_evidence).map(([ek, ev]) => (
+                        {Object.entries(rec.computed_evidence || {}).map(([ek, ev]) => (
                           <span key={ek} className="bg-white px-2 py-0.5 rounded border border-gray-200 text-gray-700">
-                            {ek.replace('_', ' ')}: <strong className="text-black">{String(ev)}</strong>
+                            {ek.replace(/_/g, ' ')}:{' '}
+                            <strong className="text-black">
+                              {typeof ev === 'object' && ev !== null ? JSON.stringify(ev) : String(ev)}
+                            </strong>
                           </span>
                         ))}
                       </div>
@@ -282,10 +285,12 @@ export function RecommendationsWorkspace({
                             Configured Rule Thresholds
                           </span>
                           <div className="space-y-0.5 font-mono text-[11px] text-gray-700">
-                            {Object.entries(rec.threshold_values).map(([tk, tv]) => (
+                            {Object.entries(rec.threshold_values || {}).map(([tk, tv]) => (
                               <div key={tk} className="flex justify-between">
-                                <span className="capitalize">{tk.replace('_', ' ')}:</span>
-                                <span className="font-bold">{String(tv)}</span>
+                                <span className="capitalize">{tk.replace(/_/g, ' ')}:</span>
+                                <span className="font-bold">
+                                  {typeof tv === 'object' && tv !== null ? JSON.stringify(tv) : String(tv)}
+                                </span>
                               </div>
                             ))}
                           </div>

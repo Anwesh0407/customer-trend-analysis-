@@ -29,6 +29,7 @@ import type {
   UserProfile,
 } from './types';
 import { DemoDataBanner } from './components/Badges';
+import { ErrorBoundary } from './components/ErrorBoundary';
 
 // Workspaces
 import { HomeWorkspace } from './workspaces/HomeWorkspace';
@@ -590,7 +591,8 @@ export function App() {
 
       {/* Main Workspace Canvas */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        {activeTab === 'home' && (
+        <ErrorBoundary onReset={() => setActiveTab('home')}>
+          {activeTab === 'home' && (
           <HomeWorkspace
             categories={categories}
             selectedCategory={selectedCategory}
@@ -692,6 +694,7 @@ export function App() {
             onCancel={() => setActiveTab('home')}
           />
         )}
+        </ErrorBoundary>
       </main>
 
       {/* Persistent Enterprise Footer (Exact Stitch Design) */}
